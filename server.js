@@ -21,7 +21,7 @@ for (var i = 0; i < 5; i++) {
     var numString = "ResPhoneNumber " + (i + 1);
     var emailString = "ResEmail " + (i + 1);
     var idString = "ResID " + (i + 1);
-    var routeName = "ResRouteName " + (i + 1);
+    var routeName = "res" + (i + 1);
     reservations.push({
         "name": nameString,
         "phone-number": numString,
@@ -36,7 +36,7 @@ for (var i = 0; i < 3; i++) {
     var numString = "WaitlistPhoneNumber " + (i + 1);
     var emailString = "WaitlistEmail " + (i + 1);
     var idString = "WaitlistID " + (i + 1);
-    var routeName = "WaitlistRouteName " + (i + 1);
+    var routeName = "waitlist" + (i + 1);
     waitlist.push({
         "name": nameString,
         "phone-number": numString,
@@ -86,7 +86,7 @@ app.post("/api/tables", function (req, res) {
     else {
         console.log("Added to waitlist");
         waitlist.push(reservation);
-        message = "You are on the waitlist.";
+        message = "You are on the waitlist at position " + (waitlist.length) + ".";
     }
 
     res.json({ "message": message, "data": reservation });

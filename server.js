@@ -16,37 +16,47 @@ var reservations = [];
 
 var limit = 5;
 
-for (var i = 0; i<5 ; i++)
-{
-  var nameString = "Res "+(i+1);
-  var numString = "ResPhoneNumber "+(i+1);
-  var emailString = "ResEmail "+(i+1);
-  var idString = "ResID "+(i+1);
-  var routeName = "ResRouteName "+(i+1);
-  reservations.push({
-    "name": nameString,
-    "phone-number": numString,
-    "email": emailString,
-    "id": idString,
-    "routeName": routeName
-  });
+for (var i = 0; i < 5; i++) {
+    var nameString = "Res " + (i + 1);
+    var numString = "ResPhoneNumber " + (i + 1);
+    var emailString = "ResEmail " + (i + 1);
+    var idString = "ResID " + (i + 1);
+    var routeName = "res" + (i + 1);
+    reservations.push({
+        "name": nameString,
+        "phone-number": numString,
+        "email": emailString,
+        "id": idString,
+        "routeName": routeName
+    });
 }
 
-for (var i = 0; i<3 ; i++)
-{
-  var nameString = "Waitlist "+(i+1);
-  var numString = "WaitlistPhoneNumber "+(i+1);
-  var emailString = "WaitlistEmail "+(i+1);
-  var idString = "WaitlistID "+(i+1);
-  var routeName = "WaitlistRouteName "+(i+1);
-  waitlist.push({
-    "name": nameString,
-    "phone-number": numString,
-    "email": emailString,
-    "id": idString,
-    "routeName": routeName
-  });
+for (var i = 0; i < 3; i++) {
+    var nameString = "Waitlist " + (i + 1);
+    var numString = "WaitlistPhoneNumber " + (i + 1);
+    var emailString = "WaitlistEmail " + (i + 1);
+    var idString = "WaitlistID " + (i + 1);
+    var routeName = "waitlist" + (i + 1);
+    waitlist.push({
+        "name": nameString,
+        "phone-number": numString,
+        "email": emailString,
+        "id": idString,
+        "routeName": routeName
+    });
 }
+
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "home.html"));
+});
+
+app.get("/tables", function (req, res) {
+    res.sendFile(path.join(__dirname, "view.html"));
+});
+
+app.get("/reserve", function (req, res) {
+    res.sendFile(path.join(__dirname, "make.html"));
+});
 
 app.get("/api/tables", function (req, res) {
     return res.json(reservations);
@@ -68,7 +78,7 @@ app.post("/api/tables", function (req, res) {
     reservation.routeName = reservation.name.replace(/\s+/g, "").toLowerCase();
 
     console.log(reservation);
-    if(reservations.length < limit) {
+    if (reservations.length < limit) {
         console.log("Added to reservations");
         reservations.push(reservation);
         message = "You have made a reservation.";
@@ -76,10 +86,10 @@ app.post("/api/tables", function (req, res) {
     else {
         console.log("Added to waitlist");
         waitlist.push(reservation);
-        message = "You are on the waitlist.";
+        message = "You are on the waitlist at position " + (waitlist.length) + ".";
     }
 
-    res.json({"message": message, "data": reservation});
+    res.json({ "message": message, "data": reservation });
 });
 
 app.listen(PORT, function () {

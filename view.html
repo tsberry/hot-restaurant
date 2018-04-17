@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +11,15 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <body>
     <div class="jumbotron text-center">
         <h1><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>Hot Restaurant</h1>
         <hr>
         <h2>Current Reservations and Waiting List</h2>
         <p>
-            <a class="btn btn-danger btn-lg" href="#" role="button"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>Make Reservation</a>
-            <a class="btn btn-default btn-lg" href="#" role="button"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+            <a class="btn btn-danger btn-lg" href="/reserve" role="button"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>Make Reservation</a>
+            <a class="btn btn-default btn-lg" href="/" role="button"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
         </p>
     </div>
 
@@ -25,9 +27,13 @@
         <div class="panel-heading">
             <h3 class="panel-title">Current Reservations</h3>
         </div>
-            <div class="panel-body">
-               <!-- content -->
-            </div>
+        <div class="panel-body">
+            <table class="table">
+                <tbody id="reserve">
+
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="panel panel-default">
@@ -35,11 +41,37 @@
             <h3 class="panel-title">Waiting List</h3>
         </div>
         <div class="panel-body">
-            <!-- content -->
+            <table class="table">
+                <tbody id="waitlist">
+
+                </tbody>
+            </table>
         </div>
     </div>
+
+    <script>
+        $.get("/api/tables", function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var newRow = $("<tr>");
+                newRow.html("<span class='label label-primary'>" + (i + 1) + "</span> | " + data[i].id);
+                $("#reserve").append(newRow);
+            }
+        })
+
+        $.get("/api/waitlist", function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var newRow = $("<tr>");
+                newRow.html("<span class='label label-primary'>" + (i + 1) + "</span> | " + data[i].id);
+                $("#waitlist").append(newRow);
+            }
+        })
+    </script>
+
 </body>
 <footer>
         <p>API Table Link | API Waitlist | GitHub Repo</p>
 </footer>
+
 </html>

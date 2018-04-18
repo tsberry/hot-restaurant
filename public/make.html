@@ -65,7 +65,7 @@
                 name: $("#name").val().trim(),
                 phone: $("#phone").val().trim(),
                 email: $("#email").val().trim(),
-                id: $("#unique-id").val().trim()
+                displayId: $("#unique-id").val().trim()
 
             };
             $.post("/api/tables", newReservation).then(function (data) {

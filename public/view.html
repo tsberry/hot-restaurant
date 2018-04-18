@@ -54,7 +54,7 @@
             console.log(data);
             for (var i = 0; i < data.length; i++) {
                 var newRow = $("<tr>");
-                newRow.html("<span class='label label-primary'>" + (i + 1) + "</span> | " + data[i].id);
+                newRow.html("<span class='label label-primary'>" + (i + 1) + "</span> | " + data[i].displayid);
                 $("#reserve").append(newRow);
             }
         })
@@ -63,7 +63,7 @@
             console.log(data);
             for (var i = 0; i < data.length; i++) {
                 var newRow = $("<tr>");
-                newRow.html("<span class='label label-primary'>" + (i + 1) + "</span> | " + data[i].id);
+                newRow.html("<span class='label label-primary'>" + (i + 1) + "</span> | " + data[i].displayid);
                 $("#waitlist").append(newRow);
             }
         })

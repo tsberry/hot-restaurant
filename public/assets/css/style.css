@@ -1,6 +1,6 @@
-body {
+.container {
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
 }
 
 hr {
@@ -9,4 +9,16 @@ hr {
 
 .input-group {
     width: 100%;
+}
+
+#logo {
+    padding-right: 5px;
+}
+
+.icons {
+    padding-right: 5px;
+}
+
+.btn {
+    margin-top: 15px;
 }

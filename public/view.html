@@ -7,46 +7,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>View Reservations</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="jumbotron text-center">
-        <h1><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>Hot Restaurant</h1>
-        <hr>
-        <h2>Current Reservations and Waiting List</h2>
-        <p>
-            <a class="btn btn-danger btn-lg" href="/reserve" role="button"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>Make Reservation</a>
-            <a class="btn btn-default btn-lg" href="/" role="button"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
-        </p>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Current Reservations</h3>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>
+                <span class="glyphicon glyphicon-fire" id="logo" aria-hidden="true"></span>Hot Restaurant</h1>
+            <hr>
+            <h2>Current Reservations and Waiting List</h2>
+            <p>
+                <a class="btn btn-danger btn-lg" href="/reserve" role="button">
+                    <span class="glyphicon glyphicon-credit-card icons" aria-hidden="true"></span>Make Reservation</a>
+                <a class="btn btn-default btn-lg" href="/" role="button">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                </a>
+            </p>
         </div>
-        <div class="panel-body">
-            <table class="table">
-                <tbody id="reserve">
 
-                </tbody>
-            </table>
-        </div>
-    </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Current Reservations</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tbody id="reserve">
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Waiting List</h3>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="panel-body">
-            <table class="table">
-                <tbody id="waitlist">
 
-                </tbody>
-            </table>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Waiting List</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tbody id="waitlist">
+
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <footer>
+            <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Waitlist</a> | <a href ="https://github.com/tsberry/hot-restaurant">GitHub Repo</a></p>
+        </footer>
     </div>
 
     <script>
@@ -70,8 +80,5 @@
     </script>
 
 </body>
-<footer>
-        <p>API Table Link | API Waitlist | GitHub Repo</p>
-</footer>
 
 </html>

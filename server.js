@@ -11,6 +11,9 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Client-side html files
+app.use(express.static("public"))
+
 var waitlist = [];
 var reservations = [];
 
@@ -47,15 +50,15 @@ for (var i = 0; i < 3; i++) {
 }
 
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile(path.join(__dirname, "/public/home.html"));
 });
 
 app.get("/tables", function (req, res) {
-    res.sendFile(path.join(__dirname, "view.html"));
+    res.sendFile(path.join(__dirname, "/public/view.html"));
 });
 
 app.get("/reserve", function (req, res) {
-    res.sendFile(path.join(__dirname, "make.html"));
+    res.sendFile(path.join(__dirname, "/public/make.html"));
 });
 
 app.get("/api/tables", function (req, res) {
